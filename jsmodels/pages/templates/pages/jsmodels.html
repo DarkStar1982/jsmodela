@@ -1,0 +1,75 @@
+<html>
+    <head>
+    	{% load static %}
+        <title>Build a simple сalculator</title>
+        <!--meta section -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- stylesheets imports -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css"/>
+        
+        <!-- local style -->
+        <link rel="stylesheet" href="{% static 'styles.css' %}"/>
+        <!-- js imports -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static 'acorn_interpreter.js' %}" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+                <h3 style="text-align: center">Inputs</h3>
+                <div id="table-container-1" class="table-container">
+                        <div class="table-header">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-body">
+                            <table>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="pure-u-3-5">
+                <h3 style="text-align: center">Code</h3>
+                    <div id="editor"></div>
+                    <label id="last_error" class="error_label_style"></label><br/>
+                    <button class="pure-button pure-button-primary" onclick="run_code()">Run</button>
+                    <a class="pure-button button-success" href="#">Share</a>
+            </div>
+            <div class="pure-u-1-5">
+                <h3 style="text-align: center">Outputs</h3>
+                <div id="table-container-2" class="table-container">
+                        <div class="table-header table-pure">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-body">
+                            <table>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+            </div>
+        </div>
+    </body>
+    <script src="{% static 'local_js.js' %}" type="text/javascript"></script>
+</html>
