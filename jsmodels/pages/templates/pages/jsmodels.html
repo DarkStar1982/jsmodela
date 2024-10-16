@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
     	{% load static %}
@@ -41,12 +42,18 @@
 
             </div>
             <div class="pure-u-3-5">
+                
                 <h3 style="text-align: center">Code</h3>
                     <div id="editor"></div>
                     <label id="last_error" class="error_label_style"></label><br/>
-                    <button class="pure-button pure-button-primary" onclick="run_code()">Run</button>
-                    <a class="pure-button button-success" href="#">Share</a>
+                    <button class="pure-button pure-button-primary" onclick="run_code()">Run</button>   
+                <form action="/" method="POST" id="form_ps">
+                    {% csrf_token %}
+                      <button class="pure-button button-success" type="submit" id="submit_share" onclick="submit_action(event)" value="Share">Share
+                    </button>
+                </form>
             </div>
+
             <div class="pure-u-1-5">
                 <h3 style="text-align: center">Outputs</h3>
                 <div id="table-container-2" class="table-container">

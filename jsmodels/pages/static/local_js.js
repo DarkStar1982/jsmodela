@@ -130,6 +130,29 @@ class SymbolTable {
     }
 }
 
+
+function submit_action(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var input_variables = table1.getTableValues();
+    var output_variables = table2.getTableValues();
+    var code = editor.getValue();
+
+    var post_data = {"inputs":input_variables, "outputs":output_variables, "code":code};
+
+    var hiddenInputTestData = document.createElement('input');
+    hiddenInputTestData.type = 'hidden';
+    hiddenInputTestData.name = 'post_data';
+    hiddenInputTestData.value = JSON.stringify(post_data);
+        
+    // Add the hidden inputs to the form
+    var form = document.getElementById("form_ps")
+    form.appendChild(hiddenInputTestData);
+    // Submit the form
+    form.submit();
+}
+
+
 // Initialize tables
 const table1 = new SymbolTable('table-container-1', 1);
 const table2 = new SymbolTable('table-container-2', 1, true); // Different number of rows per load
@@ -138,6 +161,6 @@ const table2 = new SymbolTable('table-container-2', 1, true); // Different numbe
 var editor = ace.edit("editor");
 
 //editor.setTheme("ace/theme/monokai");
-editor.setTheme("ace/theme/solarized");
+editor.setTheme("ace/theme/twilight");
 editor.session.setMode("ace/mode/javascript");
 

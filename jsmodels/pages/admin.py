@@ -1,3 +1,4 @@
 from django.contrib import admin
+from pages.models import SharedModelData
 
-# Register your models here.
+admin.site.register(SharedModelData)

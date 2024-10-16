@@ -1,0 +1,5 @@
+.DS_Store
+*.pyc
+__pycache__/
+jsmodels_venv/
+*.sqlite3
