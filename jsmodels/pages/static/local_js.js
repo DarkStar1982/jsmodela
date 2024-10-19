@@ -1,4 +1,4 @@
-function run_code(input_vars, output_vars){
+function run_code(){
     var code = editor.getValue();
     var input_variables = table1.getTableValues();
     var output_variables = table2.getTableValues();
@@ -87,7 +87,7 @@ class SymbolTable {
             return raw_names;
     }
 
-    createRow(read_only) {
+    createRow(read_only, key='', value='') {
         const row = document.createElement('tr');
 
         var focus_id;
@@ -105,9 +105,15 @@ class SymbolTable {
             {
                 input.id = this.table_id + this.rowCount+"_name"
                 focus_id = input.id;
+                if (key!='') input.value = key;
+
             }
-            if (i==1) input.id = this.table_id + this.rowCount+"_value"
-                cell.appendChild(input);
+            if (i==1) 
+            {
+                    input.id = this.table_id + this.rowCount+"_value";
+                    if (value != '') input.value = value;
+            }
+            cell.appendChild(input);
             row.appendChild(cell);
         }
         this.tbody.appendChild(row);
@@ -130,6 +136,50 @@ class SymbolTable {
     }
 }
 
+function load_model()
+{
+    var model_hash = document.getElementById("model_hash").innerHTML;
+    console.log(model_hash);
+    if (model_hash!='None')
+    {
+        table1 = new SymbolTable('table-container-1', 0);
+        table2 = new SymbolTable('table-container-2', 0, true);
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            // What to do when the response is ready
+            data = JSON.parse(this.responseText);
+            editor.setValue(data["code"]);
+            var input_variables = data["input_vars"].split("\n");
+            for (x in input_variables)
+            {
+                if (input_variables[x].length>0)
+                {
+                    v_name = input_variables[x].split('=')[0].replace("var","").trim();
+                    v_value = input_variables[x].split('=')[1].replace(";","").trim();
+                    table1.createRow(false,v_name, v_value);
+                }
+            }
+            var output_variables = data["output_vars"].split("\n");
+            for (y in output_variables)
+            {
+                console.log(output_variables[y]);
+                if (output_variables[y].length>0)
+                {
+                    v_name = output_variables[y].split(';')[0].replace("var","").trim()
+                    table2.createRow(true, v_name, '');
+                }
+            }
+            run_code();
+        }
+        xhttp.open("GET", "get_data?model_hash="+model_hash, true);
+        xhttp.send();
+    }
+    else {
+        // Initialize tables
+        table1 = new SymbolTable('table-container-1', 1);
+        table2 = new SymbolTable('table-container-2', 1, true); // Different number of rows per load
+    }
+}
 
 function submit_action(event) {
     event.preventDefault(); // Prevent the default form submission
@@ -153,9 +203,9 @@ function submit_action(event) {
 }
 
 
-// Initialize tables
-const table1 = new SymbolTable('table-container-1', 1);
-const table2 = new SymbolTable('table-container-2', 1, true); // Different number of rows per load
+// Create tables
+var table1; 
+var table2;
 
 //init editor
 var editor = ace.edit("editor");
@@ -163,4 +213,5 @@ var editor = ace.edit("editor");
 //editor.setTheme("ace/theme/monokai");
 editor.setTheme("ace/theme/twilight");
 editor.session.setMode("ace/mode/javascript");
+load_model();
 

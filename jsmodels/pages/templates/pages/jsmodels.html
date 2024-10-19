@@ -47,7 +47,7 @@
                     <div id="editor"></div>
                     <label id="last_error" class="error_label_style"></label><br/>
                     <button class="pure-button pure-button-primary" onclick="run_code()">Run</button>   
-                <form action="/" method="POST" id="form_ps">
+                <form action="/model" method="POST" id="form_ps">
                     {% csrf_token %}
                       <button class="pure-button button-success" type="submit" id="submit_share" onclick="submit_action(event)" value="Share">Share
                     </button>
@@ -77,6 +77,7 @@
 
             </div>
         </div>
+        <label id="model_hash" hidden>{{ model_hash }}</label>
     </body>
     <script src="{% static 'local_js.js' %}" type="text/javascript"></script>
 </html>
