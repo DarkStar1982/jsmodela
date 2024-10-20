@@ -21,6 +21,11 @@ body
     background-color: #f557f2;
 }
 
+.actions_bar {
+    border-collapse: collapse!important;
+    border: 0px!important
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
