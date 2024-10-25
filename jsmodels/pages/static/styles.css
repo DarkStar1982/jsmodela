@@ -26,6 +26,10 @@ body
     border: 0px!important
 }
 
+.table_footer {
+    align: center
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -55,4 +59,8 @@ tr:last-child td {
 .button-success {
     background: rgb(28, 184, 65);
 /* this is a green */
+}
+.button-delete
+{
+    background: rgb(219, 141, 28);  
 }

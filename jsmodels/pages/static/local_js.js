@@ -202,6 +202,19 @@ function submit_action(event) {
     form.submit();
 }
 
+function delete_last_row(container_id)
+{
+    const container = document.getElementById(container_id);
+    
+    // Find the table in the table-body div
+    const tableBody = container.querySelector('.table-body table tbody');
+    
+    // Delete the last row if any rows exist
+    if (tableBody.rows.length > 0) {
+        tableBody.deleteRow(-1);
+    }
+ 
+}
 
 // Create tables
 var table1; 

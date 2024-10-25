@@ -20,10 +20,10 @@
     </head>
     <body>
         <div class="pure-g">
-            <div class="pure-u-1-5">
+            <div class="pure-u-1-4">
                 <h3 style="text-align: center">Inputs</h3>
                 <div id="table-container-1" class="table-container">
-                        <div class="table-header">
+                    <div class="table-header">
                             <table>
                                 <thead>
                                     <tr>
@@ -38,10 +38,10 @@
                                 <tbody></tbody>
                             </table>
                         </div>
-                    </div>
-
+                        <button class="pure-button button-delete" onclick="delete_last_row(this.parentElement.id)">Delete last row</button>
+                </div>
             </div>
-            <div class="pure-u-3-5">
+            <div class="pure-u-1-2">
                 <h3 style="text-align: center">Code</h3>
                 <div id="editor"></div>
                 <label id="last_error" class="error_label_style"></label><br/>
@@ -61,7 +61,7 @@
                 </table>
             </div>
 
-            <div class="pure-u-1-5">
+            <div class="pure-u-1-4">
                 <h3 style="text-align: center">Outputs</h3>
                 <div id="table-container-2" class="table-container">
                         <div class="table-header table-pure">
@@ -79,9 +79,8 @@
                                 <tbody></tbody>
                             </table>
                         </div>
+                        <button class="pure-button button-delete" onclick="delete_last_row(this.parentElement.id)">Delete last row</button>
                     </div>
-
-
             </div>
         </div>
         <label id="model_hash" hidden>{{ model_hash }}</label>
