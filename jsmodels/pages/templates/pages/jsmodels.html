@@ -51,6 +51,9 @@
                             <button class="pure-button pure-button-primary" onclick="run_code()">Run</button>
                         </td>
                         <td class="actions_bar">
+                            <button class="pure-button button-edit" id="editing_on" onclick="unlock_model()">Edit</button>
+                        </td>
+                        <td class="actions_bar">
                             <form action="/model" method="POST" id="form_ps">
                             {% csrf_token %}
                             <button class="pure-button button-success" type="submit" id="submit_share" onclick="submit_action(event)" value="Share">Share

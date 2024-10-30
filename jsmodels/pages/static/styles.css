@@ -64,3 +64,9 @@ tr:last-child td {
 {
     background: rgb(219, 141, 28);  
 }
+
+.button-edit
+{
+    background: rgb(255, 165, 0);  
+}
+

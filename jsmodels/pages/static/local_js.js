@@ -139,6 +139,43 @@ class SymbolTable {
     }
 }
 
+function unlock_model()
+{
+        //show controls
+        document.querySelectorAll('.button-delete').forEach(element => {
+            element.style.visibility = "visible";
+            element.style.display = "block";
+
+        });
+        document.getElementById('submit_share').style.visibility = "visible";
+        document.getElementById('submit_share').style.display = "block";
+        //add editable rows
+        table1.model_hash = false;
+        table2.model_hash = false;
+
+        //enable input rows
+        // Get the specific container's table body
+        const tableBody = document.querySelector('#table-container-1 .table-body tbody');
+    
+        // Iterate through all rows
+        Array.from(tableBody.rows).forEach(row => {
+        // Get all input elements in the current row
+        const cells = row.getElementsByTagName('td');
+        const inputs = row.getElementsByTagName('input');
+        row.style.backgroundColor = 'white';
+        // Skip the first input (readonly) and enable the second one
+        if (inputs.length >= 2) {
+            inputs[0].readOnly = false;  // Enable second input
+            // Optionally, you can also modify other input attributes
+            cells[0].style.backgroundColor = 'white';  // Visual feedback
+        }
+    });
+
+
+        //hide the edit button
+        document.getElementById('editing_on').style.display = 'none';
+}
+
 function load_model()
 {
     var model_hash = document.getElementById("model_hash").innerHTML;
@@ -152,6 +189,7 @@ function load_model()
             element.style.display = 'none';
         });
         document.getElementById('submit_share').style.display = 'none';
+        //add editable option
 
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
