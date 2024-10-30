@@ -8,11 +8,11 @@ def home(request, model_id=None):
     if request.method == 'GET':
         model_hash = request.GET.get("model_hash")
         sha256_key = request.build_absolute_uri()
-        context = { 'model_hash': model_id }
         if model_id is None:
+            context = { 'model_hash': model_id, "mode":"editable"}
             return render(request, "pages/jsmodels.html", context)
         else:
-            # return read-only model m
+            context = { 'model_hash': model_id, "mode":"readonly"}
             return render(request, "pages/jsmodels.html", context)
 
     if request.method == 'POST':

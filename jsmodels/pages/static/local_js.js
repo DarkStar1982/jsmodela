@@ -36,11 +36,13 @@ function run_code(){
 }
 
 class SymbolTable {
-    constructor(containerId, rowsOnCreate = 12, read_only = false) {
+    constructor(containerId, rowsOnCreate = 12, read_only = false, input_mode = 0, mhash = false) {
         this.container = document.getElementById(containerId);
         this.tableBody = this.container.querySelector('.table-body');
         this.tbody = this.tableBody.querySelector('tbody');
         this.rowCount = 0;
+        this.mode = input_mode;
+        this.model_hash = mhash;
         this.table_id = containerId + "_table_";
         this.readOnly = read_only;
         this.loadMoreRows(rowsOnCreate, read_only);
@@ -67,7 +69,7 @@ class SymbolTable {
             if (nameInput!="")  
             {
                 raw_names.push(nameInput);
-                if (this.readOnly)
+                if ((this.readOnly) && (this.mode == 1))
                 {
                     values = values + "var " + nameInput+";\n";
                     symbol_table[nameInput] = [value_element.id, ""];
@@ -89,14 +91,14 @@ class SymbolTable {
 
     createRow(read_only, key='', value='') {
         const row = document.createElement('tr');
-
+        var table_mode = this.mode;
         var focus_id;
         for (let i = 0; i < 2; i++) {
             const cell = document.createElement('td');
             const input = document.createElement('input');
             input.type = 'text';
             input.value = '';
-            if ((read_only)&&(i==1))
+            if ((read_only)&&(i==this.mode))
             {
                 input.readOnly = true;
                 cell.style.backgroundColor = '#EFEFEF';
@@ -129,6 +131,7 @@ class SymbolTable {
     }
 
     handleKeyDown(e) {
+    if (!this.model_hash)
         if ((e.key === 'Enter') && e.target.closest('tr').nextElementSibling === null)
         {
             this.loadMoreRows(1, this.readOnly);
@@ -139,11 +142,17 @@ class SymbolTable {
 function load_model()
 {
     var model_hash = document.getElementById("model_hash").innerHTML;
-    console.log(model_hash);
+    //render as read-only
     if (model_hash!='None')
     {
-        table1 = new SymbolTable('table-container-1', 0);
-        table2 = new SymbolTable('table-container-2', 0, true);
+        table1 = new SymbolTable('table-container-1', 0, true, 0, true);
+        table2 = new SymbolTable('table-container-2', 0, true, 1, true);
+        //hide controls
+        document.querySelectorAll('.button-delete').forEach(element => {
+            element.style.display = 'none';
+        });
+        document.getElementById('submit_share').style.display = 'none';
+
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
             // What to do when the response is ready
@@ -156,13 +165,12 @@ function load_model()
                 {
                     v_name = input_variables[x].split('=')[0].replace("var","").trim();
                     v_value = input_variables[x].split('=')[1].replace(";","").trim();
-                    table1.createRow(false,v_name, v_value);
+                    table1.createRow(true,v_name, v_value);
                 }
             }
             var output_variables = data["output_vars"].split("\n");
             for (y in output_variables)
             {
-                console.log(output_variables[y]);
                 if (output_variables[y].length>0)
                 {
                     v_name = output_variables[y].split(';')[0].replace("var","").trim()
@@ -176,8 +184,8 @@ function load_model()
     }
     else {
         // Initialize tables
-        table1 = new SymbolTable('table-container-1', 1);
-        table2 = new SymbolTable('table-container-2', 1, true); // Different number of rows per load
+        table1 = new SymbolTable('table-container-1', 1, false, 0, false);
+        table2 = new SymbolTable('table-container-2', 1, true, 1, false); // Different number of rows per load
     }
 }
 
@@ -215,6 +223,7 @@ function delete_last_row(container_id)
     }
  
 }
+
 
 // Create tables
 var table1; 
