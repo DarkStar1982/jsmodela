@@ -152,24 +152,26 @@ function unlock_model()
         //add editable rows
         table1.model_hash = false;
         table2.model_hash = false;
-
+        table1.readOnly = false;
         //enable input rows
         // Get the specific container's table body
         const tableBody = document.querySelector('#table-container-1 .table-body tbody');
     
         // Iterate through all rows
         Array.from(tableBody.rows).forEach(row => {
-        // Get all input elements in the current row
-        const cells = row.getElementsByTagName('td');
-        const inputs = row.getElementsByTagName('input');
-        row.style.backgroundColor = 'white';
-        // Skip the first input (readonly) and enable the second one
-        if (inputs.length >= 2) {
-            inputs[0].readOnly = false;  // Enable second input
-            // Optionally, you can also modify other input attributes
-            cells[0].style.backgroundColor = 'white';  // Visual feedback
-        }
-    });
+            // Get all input elements in the current row
+            const cells = row.getElementsByTagName('td');
+            const inputs = row.getElementsByTagName('input');
+            row.style.backgroundColor = 'white';
+            // Skip the first input (readonly) and enable the second one
+            if (inputs.length >= 2) {
+                inputs[1].readOnly = false;  // Enable first input
+                inputs[0].readOnly = false;  // Enable second input
+                // Optionally, you can also modify other input attributes
+                cells[0].style.backgroundColor = 'white';  // Visual feedback
+                cells[1].style.backgroundColor = 'white';  // Visual feedback
+            }
+        });
 
 
         //hide the edit button
@@ -223,7 +225,9 @@ function load_model()
     else {
         // Initialize tables
         table1 = new SymbolTable('table-container-1', 1, false, 0, false);
-        table2 = new SymbolTable('table-container-2', 1, true, 1, false); // Different number of rows per load
+        table2 = new SymbolTable('table-container-2', 1, true, 1, false);
+        document.getElementById('editing_on').style.visibility = "hidden";
+        document.getElementById('editing_on').style.display = "block";
     }
 }
 
