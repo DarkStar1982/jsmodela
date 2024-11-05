@@ -8,20 +8,34 @@ function run_code(){
     //interpreter.setProperty(globalObject, 'b', String());
 
         var wrapper = function update_dom_outputs(p_name, p_value) {
+            function isFloat(n) {
+                return n === +n && n !== (n|0);
+            }
             var dom_objects = table2.getTableValues(1);
             var table_id = dom_objects[p_name][0];
             var inputElement = document.getElementById(table_id);
-            inputElement.value = p_value;
-
+            var precision = document.getElementById('pr_set').value;
+            if (isFloat(p_value)) 
+            {
+                if (Math.abs(p_value)>1e6)
+                {
+                    inputElement.value = Number.parseFloat(p_value).toExponential(precision);
+                }
+                else
+                    inputElement.value = Number.parseFloat(p_value).toFixed(precision);
+            }
+            else
+                inputElement.value = p_value;
         };
         interpreter.setProperty(globalObject, 'update_dom_outputs', interpreter.createNativeFunction(wrapper));
     };
     var outputs = table2.getTableValues(2);
     code = code + "\n";
-    //filter for unsupported features
+    
     outputs.forEach(function(element){
         code = code + 'update_dom_outputs('+'"'+element+'"'+','+element+');\n';
     });
+    //filter for unsupported features
     code = code.replaceAll("let ", "var ");
     try
     {
