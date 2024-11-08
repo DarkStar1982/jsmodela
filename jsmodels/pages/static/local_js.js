@@ -63,6 +63,18 @@ class SymbolTable {
         this.tbody.addEventListener('keydown', (e) => this.handleKeyDown(e));
     }
 
+    clearTableValues()
+    {
+        const rows = this.tbody.querySelectorAll('tr');
+        rows.forEach((row, index) => {
+            const cells = row.querySelectorAll('td');
+            const name_element =  cells[0].querySelector('input');
+            name_element.value="";
+            var value_element = cells[1].querySelector('input');
+            value_element.value="";
+        });
+    }
+
     getTableValues(mode=0)
     {
         var values="";
@@ -274,8 +286,13 @@ function delete_last_row(container_id)
     const tableBody = container.querySelector('.table-body table tbody');
     
     // Delete the last row if any rows exist
-    if (tableBody.rows.length > 0) {
+    if (tableBody.rows.length > 1) {
         tableBody.deleteRow(-1);
+    }
+    else
+    {
+        if ('table-container-2'== container_id) table2.clearTableValues();
+        if ('table-container-1'== container_id) table1.clearTableValues();
     }
  
 }
