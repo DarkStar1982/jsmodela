@@ -175,6 +175,11 @@ function unlock_model()
         });
         document.getElementById('submit_share').style.visibility = "visible";
         document.getElementById('submit_share').style.display = "block";
+        document.getElementById('hint_outputs').style.visibility = "visible";
+        document.getElementById('hint_outputs').style.display = "block";
+        document.getElementById('hint_inputs').style.visibility = "visible";
+        document.getElementById('hint_inputs').style.display = "block";
+
         //add editable rows
         table1.model_hash = false;
         table2.model_hash = false;
@@ -198,7 +203,6 @@ function unlock_model()
                 cells[1].style.backgroundColor = 'white';  // Visual feedback
             }
         });
-
 
         //hide the edit button
         document.getElementById('editing_on').style.display = 'none';
@@ -254,6 +258,11 @@ function load_model()
         table2 = new SymbolTable('table-container-2', 1, true, 1, false);
         document.getElementById('editing_on').style.visibility = "hidden";
         document.getElementById('editing_on').style.display = "block";
+        document.getElementById('hint_outputs').style.visibility = "hidden";
+        document.getElementById('hint_outputs').style.display = "block";
+        document.getElementById('hint_inputs').style.visibility = "hidden";
+        document.getElementById('hint_inputs').style.display = "block";
+
     }
 }
 
