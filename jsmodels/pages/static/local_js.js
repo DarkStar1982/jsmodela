@@ -214,6 +214,10 @@ function load_model()
     //render as read-only
     if (model_hash!='None')
     {
+        document.getElementById('hint_outputs').style.visibility = "hidden";
+        document.getElementById('hint_outputs').style.display = "block";
+        document.getElementById('hint_inputs').style.visibility = "hidden";
+        document.getElementById('hint_inputs').style.display = "block";
         table1 = new SymbolTable('table-container-1', 0, true, 0, true);
         table2 = new SymbolTable('table-container-2', 0, true, 1, true);
         //hide controls
@@ -258,10 +262,7 @@ function load_model()
         table2 = new SymbolTable('table-container-2', 1, true, 1, false);
         document.getElementById('editing_on').style.visibility = "hidden";
         document.getElementById('editing_on').style.display = "block";
-        document.getElementById('hint_outputs').style.visibility = "hidden";
-        document.getElementById('hint_outputs').style.display = "block";
-        document.getElementById('hint_inputs').style.visibility = "hidden";
-        document.getElementById('hint_inputs').style.display = "block";
+        
 
     }
 }
