@@ -20,7 +20,6 @@ def home(request, model_id=None):
         model_hash = save_model(post_data)
         url = "/model/"+model_hash
         return redirect(url)
-        #return render(request, "pages/jsmodels.html", {})
 
 def api(request):
     model_hash = request.GET.get("model_hash")
