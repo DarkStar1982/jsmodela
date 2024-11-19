@@ -325,7 +325,7 @@
   flex: 1;
   position: relative;
 }
-.email {
+.email, .label-container {
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -335,7 +335,7 @@
   flex: 1;
   position: relative;
 }
-.au {
+.au, .name-column {
   color: var(--grey-grey-5, #9f9fbc);
   text-align: left;
   font-family: var(
@@ -364,7 +364,7 @@
   flex: 1;
   position: relative;
 }
-._1-23456543567 {
+._1-23456543567, .value-colum {
   color: var(--grey-grey-5, #9f9fbc);
   text-align: left;
   font-family: var(
@@ -383,7 +383,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.clarity-remove-solid2 {
+.clarity-remove-solid2, .action-column {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
