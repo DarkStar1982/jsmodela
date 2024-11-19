@@ -304,10 +304,15 @@ function delete_last_row(container_id)
         if ('table-container-2'== container_id) table2.clearTableValues();
         if ('table-container-1'== container_id) table1.clearTableValues();
     }
- 
 }
 
 
+function setFooterYear(footer_id) {
+    const container = document.getElementById(footer_id);
+    container.innerHTML = new Date().getFullYear();
+}
+
+setFooterYear("copyright_date");
 // Create tables
 var table1; 
 var table2;

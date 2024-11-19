@@ -1,0 +1,464 @@
+/* Figma Styles of your File */
+:root {
+  /* Colors */
+  --phoenix-logo-gradient: linear-gradient(
+    139.04deg,
+    rgba(237, 166, 91, 1) 0%,
+    rgba(250, 90, 66, 1) 100%
+  );
+  --gradient-solid-gradient-primary: linear-gradient(
+    144.36deg,
+    rgba(89, 139, 255, 1) 0%,
+    rgba(9, 75, 231, 1) 100%
+  );
+  --gradient-solid-gradient-danger: linear-gradient(
+    180deg,
+    rgba(236, 31, 0, 1) 0%,
+    rgba(204, 0, 0, 1) 100%
+  );
+  --gradient-solid-gradient-warning: linear-gradient(
+    180deg,
+    rgba(255, 137, 41, 1) 0%,
+    rgba(255, 109, 31, 1) 100%
+  );
+  --gradient-solid-gradient-success: linear-gradient(
+    180deg,
+    rgba(37, 176, 3, 1) 0%,
+    rgba(10, 150, 3, 1) 100%
+  );
+  --gradient-solid-gradient-info: linear-gradient(
+    180deg,
+    rgba(40, 178, 255, 1) 0%,
+    rgba(41, 144, 255, 1) 100%
+  );
+  --gradient-alert-gradient-blue: linear-gradient(
+    90deg,
+    rgba(169, 212, 243, 0.45) 0%,
+    rgba(155, 199, 250, 0) 100%
+  );
+  --gradient-alert-gradient-red: linear-gradient(
+    90deg,
+    rgba(242, 134, 134, 0.45) 0%,
+    rgba(248, 192, 192, 0) 100%
+  );
+  --gradient-alert-gradient-warning: linear-gradient(
+    90deg,
+    rgba(242, 172, 115, 0.45) 0%,
+    rgba(253, 198, 134, 0) 100%
+  );
+  --gradient-alert-gradient-success: linear-gradient(
+    90deg,
+    rgba(37, 176, 3, 0.45) 0%,
+    rgba(232, 251, 227, 0) 100%
+  );
+  --gradient-alert-gradient-grey: linear-gradient(
+    90deg,
+    rgba(220, 223, 229, 0.45) 0%,
+    rgba(240, 241, 245, 0) 100%
+  );
+  --gradient-chart-gradient-green: linear-gradient(
+    180.48deg,
+    rgba(7, 162, 135, 0.5) 0%,
+    rgba(0, 255, 25, 0) 100%
+  );
+  --gradient-chart-gradient-red-or-yellow: linear-gradient(
+    133.98deg,
+    rgba(255, 236, 236, 1) 0%,
+    rgba(255, 249, 227, 1) 100%
+  );
+  --gradient-chart-gradient-blue: linear-gradient(
+    180.39deg,
+    rgba(56, 116, 255, 0.5) 0%,
+    rgba(186, 254, 254, 0.04) 100%
+  );
+
+  /* Fonts */
+  --heading-styles-heading-xs-819px-bold-font-family: NunitoSans-Bold,
+    sans-serif;
+  --heading-styles-heading-xs-819px-bold-font-size: 8.1899995803833px;
+  --heading-styles-heading-xs-819px-bold-line-height: 120%;
+  --heading-styles-heading-xs-819px-bold-font-weight: 700;
+  --heading-styles-heading-xs-819px-bold-font-style: normal;
+  --heading-styles-heading-xs-819px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-xs-819px-semibold-font-size: 8.1899995803833px;
+  --heading-styles-heading-xs-819px-semibold-line-height: 120%;
+  --heading-styles-heading-xs-819px-semibold-font-weight: 600;
+  --heading-styles-heading-xs-819px-semibold-font-style: normal;
+  --heading-styles-heading-xs-819px-regular-font-family: NotoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-xs-819px-regular-font-size: 8.1899995803833px;
+  --heading-styles-heading-xs-819px-regular-line-height: 120%;
+  --heading-styles-heading-xs-819px-regular-font-weight: 400;
+  --heading-styles-heading-xs-819px-regular-font-style: normal;
+  --heading-styles-heading-s-1024px-bold-all-caps-font-family: NunitoSans-Bold,
+    sans-serif;
+  --heading-styles-heading-s-1024px-bold-all-caps-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-bold-all-caps-line-height: 120%;
+  --heading-styles-heading-s-1024px-bold-all-caps-font-weight: 700;
+  --heading-styles-heading-s-1024px-bold-all-caps-font-style: normal;
+  --heading-styles-heading-s-1024px-bold-font-family: NunitoSans-Bold,
+    sans-serif;
+  --heading-styles-heading-s-1024px-bold-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-bold-line-height: 120%;
+  --heading-styles-heading-s-1024px-bold-font-weight: 700;
+  --heading-styles-heading-s-1024px-bold-font-style: normal;
+  --heading-styles-heading-s-1024px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-s-1024px-semibold-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-semibold-line-height: 120%;
+  --heading-styles-heading-s-1024px-semibold-font-weight: 600;
+  --heading-styles-heading-s-1024px-semibold-font-style: normal;
+  --heading-styles-heading-s-1024px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-s-1024px-regular-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-regular-line-height: 120%;
+  --heading-styles-heading-s-1024px-regular-font-weight: 400;
+  --heading-styles-heading-s-1024px-regular-font-style: normal;
+  --heading-styles-heading-6-1280px-bold-font-family: NunitoSans-Bold,
+    sans-serif;
+  --heading-styles-heading-6-1280px-bold-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-bold-line-height: 120%;
+  --heading-styles-heading-6-1280px-bold-font-weight: 700;
+  --heading-styles-heading-6-1280px-bold-font-style: normal;
+  --heading-styles-heading-6-1280px-bold-all-caps-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --heading-styles-heading-6-1280px-bold-all-caps-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-bold-all-caps-line-height: 120%;
+  --heading-styles-heading-6-1280px-bold-all-caps-font-weight: 800;
+  --heading-styles-heading-6-1280px-bold-all-caps-font-style: normal;
+  --heading-styles-heading-6-1280px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-6-1280px-semibold-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-semibold-line-height: 120%;
+  --heading-styles-heading-6-1280px-semibold-font-weight: 600;
+  --heading-styles-heading-6-1280px-semibold-font-style: normal;
+  --heading-styles-heading-6-1280px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-6-1280px-regular-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-regular-line-height: 120%;
+  --heading-styles-heading-6-1280px-regular-font-weight: 400;
+  --heading-styles-heading-6-1280px-regular-font-style: normal;
+  --heading-styles-heading-5-16px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-5-16px-regular-font-size: 16px;
+  --heading-styles-heading-5-16px-regular-line-height: 120%;
+  --heading-styles-heading-5-16px-regular-font-weight: 400;
+  --heading-styles-heading-5-16px-regular-font-style: normal;
+  --heading-styles-heading-5-16px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-5-16px-semibold-font-size: 16px;
+  --heading-styles-heading-5-16px-semibold-line-height: 120%;
+  --heading-styles-heading-5-16px-semibold-font-weight: 600;
+  --heading-styles-heading-5-16px-semibold-font-style: normal;
+  --heading-styles-heading-5-16px-bold-font-family: NunitoSans-Bold, sans-serif;
+  --heading-styles-heading-5-16px-bold-font-size: 16px;
+  --heading-styles-heading-5-16px-bold-line-height: 120%;
+  --heading-styles-heading-5-16px-bold-font-weight: 700;
+  --heading-styles-heading-5-16px-bold-font-style: normal;
+  --heading-styles-heading-5-16px-extrabold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --heading-styles-heading-5-16px-extrabold-font-size: 16px;
+  --heading-styles-heading-5-16px-extrabold-line-height: 120%;
+  --heading-styles-heading-5-16px-extrabold-font-weight: 800;
+  --heading-styles-heading-5-16px-extrabold-font-style: normal;
+  --heading-styles-heading-5-16px-extrabold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --heading-styles-heading-5-16px-extrabold-font-size: 16px;
+  --heading-styles-heading-5-16px-extrabold-line-height: 120%;
+  --heading-styles-heading-5-16px-extrabold-font-weight: 800;
+  --heading-styles-heading-5-16px-extrabold-font-style: normal;
+  --heading-styles-heading-4-20px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-4-20px-regular-font-size: 20px;
+  --heading-styles-heading-4-20px-regular-line-height: 120%;
+  --heading-styles-heading-4-20px-regular-font-weight: 400;
+  --heading-styles-heading-4-20px-regular-font-style: normal;
+  --heading-styles-heading-4-20px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-4-20px-semibold-font-size: 20px;
+  --heading-styles-heading-4-20px-semibold-line-height: 120%;
+  --heading-styles-heading-4-20px-semibold-font-weight: 600;
+  --heading-styles-heading-4-20px-semibold-font-style: normal;
+  --heading-styles-heading-4-20px-bold-font-family: NunitoSans-Bold, sans-serif;
+  --heading-styles-heading-4-20px-bold-font-size: 20px;
+  --heading-styles-heading-4-20px-bold-line-height: 120%;
+  --heading-styles-heading-4-20px-bold-font-weight: 700;
+  --heading-styles-heading-4-20px-bold-font-style: normal;
+  --heading-styles-heading-4-20px-extra-bold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --heading-styles-heading-4-20px-extra-bold-font-size: 20px;
+  --heading-styles-heading-4-20px-extra-bold-line-height: 120%;
+  --heading-styles-heading-4-20px-extra-bold-font-weight: 800;
+  --heading-styles-heading-4-20px-extra-bold-font-style: normal;
+  --heading-styles-heading-3-25px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-3-25px-regular-font-size: 25px;
+  --heading-styles-heading-3-25px-regular-line-height: 120%;
+  --heading-styles-heading-3-25px-regular-font-weight: 400;
+  --heading-styles-heading-3-25px-regular-font-style: normal;
+  --heading-styles-heading-3-25px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-3-25px-semibold-font-size: 25px;
+  --heading-styles-heading-3-25px-semibold-line-height: 120%;
+  --heading-styles-heading-3-25px-semibold-font-weight: 600;
+  --heading-styles-heading-3-25px-semibold-font-style: normal;
+  --heading-styles-heading-3-25px-bold-font-family: NunitoSans-Bold, sans-serif;
+  --heading-styles-heading-3-25px-bold-font-size: 25px;
+  --heading-styles-heading-3-25px-bold-line-height: 120%;
+  --heading-styles-heading-3-25px-bold-font-weight: 700;
+  --heading-styles-heading-3-25px-bold-font-style: normal;
+  --heading-styles-heading-3-25px-extrabold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --heading-styles-heading-3-25px-extrabold-font-size: 25px;
+  --heading-styles-heading-3-25px-extrabold-line-height: 120%;
+  --heading-styles-heading-3-25px-extrabold-font-weight: 800;
+  --heading-styles-heading-3-25px-extrabold-font-style: normal;
+  --heading-styles-heading-2-3125px-extrabold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --heading-styles-heading-2-3125px-extrabold-font-size: 31.25px;
+  --heading-styles-heading-2-3125px-extrabold-line-height: 120%;
+  --heading-styles-heading-2-3125px-extrabold-font-weight: 800;
+  --heading-styles-heading-2-3125px-extrabold-font-style: normal;
+  --heading-styles-heading-2-3125px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-2-3125px-semibold-font-size: 31.25px;
+  --heading-styles-heading-2-3125px-semibold-line-height: 120%;
+  --heading-styles-heading-2-3125px-semibold-font-weight: 600;
+  --heading-styles-heading-2-3125px-semibold-font-style: normal;
+  --heading-styles-heading-2-3125px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-2-3125px-regular-font-size: 31.25px;
+  --heading-styles-heading-2-3125px-regular-line-height: 120%;
+  --heading-styles-heading-2-3125px-regular-font-weight: 400;
+  --heading-styles-heading-2-3125px-regular-font-style: normal;
+  --heading-styles-heading-1-3906px-extrabold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --heading-styles-heading-1-3906px-extrabold-font-size: 39.060001373291016px;
+  --heading-styles-heading-1-3906px-extrabold-line-height: 120%;
+  --heading-styles-heading-1-3906px-extrabold-font-weight: 800;
+  --heading-styles-heading-1-3906px-extrabold-font-style: normal;
+  --heading-styles-heading-1-3906px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --heading-styles-heading-1-3906px-semibold-font-size: 39.099998474121094px;
+  --heading-styles-heading-1-3906px-semibold-line-height: 120%;
+  --heading-styles-heading-1-3906px-semibold-font-weight: 600;
+  --heading-styles-heading-1-3906px-semibold-font-style: normal;
+  --heading-styles-heading-1-3906px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --heading-styles-heading-1-3906px-regular-font-size: 39.060001373291016px;
+  --heading-styles-heading-1-3906px-regular-line-height: 120%;
+  --heading-styles-heading-1-3906px-regular-font-weight: 400;
+  --heading-styles-heading-1-3906px-regular-font-style: normal;
+  --display-styles-display-3-4883px-bold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --display-styles-display-3-4883px-bold-font-size: 48.88999938964844px;
+  --display-styles-display-3-4883px-bold-line-height: 100%;
+  --display-styles-display-3-4883px-bold-font-weight: 800;
+  --display-styles-display-3-4883px-bold-font-style: normal;
+  --display-styles-display-3-4883px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --display-styles-display-3-4883px-semibold-font-size: 48.83000183105469px;
+  --display-styles-display-3-4883px-semibold-line-height: 100%;
+  --display-styles-display-3-4883px-semibold-font-weight: 600;
+  --display-styles-display-3-4883px-semibold-font-style: normal;
+  --display-styles-display-3-4883px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --display-styles-display-3-4883px-regular-font-size: 48.83000183105469px;
+  --display-styles-display-3-4883px-regular-line-height: 120%;
+  --display-styles-display-3-4883px-regular-font-weight: 400;
+  --display-styles-display-3-4883px-regular-font-style: normal;
+  --display-styles-display-2-6104px-bold-font-family: NunitoSans-ExtraBold,
+    sans-serif;
+  --display-styles-display-2-6104px-bold-font-size: 61.040000915527344px;
+  --display-styles-display-2-6104px-bold-line-height: 120%;
+  --display-styles-display-2-6104px-bold-font-weight: 800;
+  --display-styles-display-2-6104px-bold-font-style: normal;
+  --display-styles-display-2-6104px-medium-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --display-styles-display-2-6104px-medium-font-size: 61.040000915527344px;
+  --display-styles-display-2-6104px-medium-line-height: 120%;
+  --display-styles-display-2-6104px-medium-font-weight: 600;
+  --display-styles-display-2-6104px-medium-font-style: normal;
+  --display-styles-display-2-6104px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --display-styles-display-2-6104px-regular-font-size: 61.040000915527344px;
+  --display-styles-display-2-6104px-regular-line-height: 120%;
+  --display-styles-display-2-6104px-regular-font-weight: 400;
+  --display-styles-display-2-6104px-regular-font-style: normal;
+  --display-styles-display-1-7629px-extrabold-font-family: NunitoSans-Black,
+    sans-serif;
+  --display-styles-display-1-7629px-extrabold-font-size: 76.29000091552734px;
+  --display-styles-display-1-7629px-extrabold-line-height: 95%;
+  --display-styles-display-1-7629px-extrabold-font-weight: 900;
+  --display-styles-display-1-7629px-extrabold-font-style: normal;
+  --display-styles-display-1-7629px-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --display-styles-display-1-7629px-semibold-font-size: 76.29000091552734px;
+  --display-styles-display-1-7629px-semibold-line-height: 120%;
+  --display-styles-display-1-7629px-semibold-font-weight: 600;
+  --display-styles-display-1-7629px-semibold-font-style: normal;
+  --display-styles-display-1-7629px-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --display-styles-display-1-7629px-regular-font-size: 76.29000091552734px;
+  --display-styles-display-1-7629px-regular-line-height: 120%;
+  --display-styles-display-1-7629px-regular-font-weight: 400;
+  --display-styles-display-1-7629px-regular-font-style: normal;
+  --base-text-styles-font-size-2-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --base-text-styles-font-size-2-regular-font-size: 10.239999771118164px;
+  --base-text-styles-font-size-2-regular-line-height: 149%;
+  --base-text-styles-font-size-2-regular-font-weight: 400;
+  --base-text-styles-font-size-2-regular-font-style: normal;
+  --base-text-styles-font-size-2-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-2-semibold-font-size: 10.239999771118164px;
+  --base-text-styles-font-size-2-semibold-line-height: 149%;
+  --base-text-styles-font-size-2-semibold-font-weight: 600;
+  --base-text-styles-font-size-2-semibold-font-style: normal;
+  --base-text-styles-font-size-1-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --base-text-styles-font-size-1-regular-font-size: 12.800000190734863px;
+  --base-text-styles-font-size-1-regular-line-height: 149%;
+  --base-text-styles-font-size-1-regular-font-weight: 400;
+  --base-text-styles-font-size-1-regular-font-style: normal;
+  --base-text-styles-font-size-1-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-1-semibold-font-size: 12.800000190734863px;
+  --base-text-styles-font-size-1-semibold-line-height: 149%;
+  --base-text-styles-font-size-1-semibold-font-weight: 600;
+  --base-text-styles-font-size-1-semibold-font-style: normal;
+  --base-text-styles-font-size-0-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --base-text-styles-font-size-0-regular-font-size: 16px;
+  --base-text-styles-font-size-0-regular-line-height: 149%;
+  --base-text-styles-font-size-0-regular-font-weight: 400;
+  --base-text-styles-font-size-0-regular-font-style: normal;
+  --base-text-styles-font-size-0-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-0-semibold-font-size: 16px;
+  --base-text-styles-font-size-0-semibold-line-height: 149%;
+  --base-text-styles-font-size-0-semibold-font-weight: 600;
+  --base-text-styles-font-size-0-semibold-font-style: normal;
+  --base-text-styles-font-size-1-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --base-text-styles-font-size-1-regular-font-size: 20px;
+  --base-text-styles-font-size-1-regular-line-height: 149%;
+  --base-text-styles-font-size-1-regular-font-weight: 400;
+  --base-text-styles-font-size-1-regular-font-style: normal;
+  --base-text-styles-font-size-1-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-1-semibold-font-size: 20px;
+  --base-text-styles-font-size-1-semibold-line-height: 140%;
+  --base-text-styles-font-size-1-semibold-font-weight: 600;
+  --base-text-styles-font-size-1-semibold-font-style: normal;
+  --base-text-styles-font-size-2-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --base-text-styles-font-size-2-regular-font-size: 25px;
+  --base-text-styles-font-size-2-regular-line-height: 149%;
+  --base-text-styles-font-size-2-regular-font-weight: 400;
+  --base-text-styles-font-size-2-regular-font-style: normal;
+  --base-text-styles-font-size-2-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-2-semibold-font-size: 25px;
+  --base-text-styles-font-size-2-semibold-line-height: 149%;
+  --base-text-styles-font-size-2-semibold-font-weight: 600;
+  --base-text-styles-font-size-2-semibold-font-style: normal;
+  --base-text-styles-font-size-3-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --base-text-styles-font-size-3-regular-font-size: 31.25px;
+  --base-text-styles-font-size-3-regular-line-height: 149%;
+  --base-text-styles-font-size-3-regular-font-weight: 400;
+  --base-text-styles-font-size-3-regular-font-style: normal;
+  --base-text-styles-font-size-3-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-3-semibold-font-size: 31.25px;
+  --base-text-styles-font-size-3-semibold-line-height: 149%;
+  --base-text-styles-font-size-3-semibold-font-weight: 600;
+  --base-text-styles-font-size-3-semibold-font-style: normal;
+  --base-text-styles-font-size-4-regular-font-family: NunitoSans-Regular,
+    sans-serif;
+  --base-text-styles-font-size-4-regular-font-size: 39.060001373291016px;
+  --base-text-styles-font-size-4-regular-line-height: 149%;
+  --base-text-styles-font-size-4-regular-font-weight: 400;
+  --base-text-styles-font-size-4-regular-font-style: normal;
+  --base-text-styles-font-size-4-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-4-semibold-font-size: 39.060001373291016px;
+  --base-text-styles-font-size-4-semibold-line-height: 149%;
+  --base-text-styles-font-size-4-semibold-font-weight: 600;
+  --base-text-styles-font-size-4-semibold-font-style: normal;
+  --base-text-styles-font-size-5-regular-font-family: Manrope-Regular,
+    sans-serif;
+  --base-text-styles-font-size-5-regular-font-size: 48.83000183105469px;
+  --base-text-styles-font-size-5-regular-line-height: 149%;
+  --base-text-styles-font-size-5-regular-font-weight: 400;
+  --base-text-styles-font-size-5-regular-font-style: normal;
+  --base-text-styles-font-size-5-semibold-font-family: NunitoSans-SemiBold,
+    sans-serif;
+  --base-text-styles-font-size-5-semibold-font-size: 48.83000183105469px;
+  --base-text-styles-font-size-5-semibold-line-height: 149%;
+  --base-text-styles-font-size-5-semibold-font-weight: 600;
+  --base-text-styles-font-size-5-semibold-font-style: normal;
+  --button-text-style-regular-bold-font-family: NunitoSans-Bold, sans-serif;
+  --button-text-style-regular-bold-font-size: 12.800000190734863px;
+  --button-text-style-regular-bold-line-height: 120%;
+  --button-text-style-regular-bold-font-weight: 700;
+  --button-text-style-regular-bold-font-style: normal;
+  --button-text-style-large-bold-font-family: NunitoSans-Bold, sans-serif;
+  --button-text-style-large-bold-font-size: 16px;
+  --button-text-style-large-bold-line-height: 120%;
+  --button-text-style-large-bold-font-weight: 700;
+  --button-text-style-large-bold-font-style: normal;
+  --button-text-style-small-bold-font-family: NunitoSans-ExtraBold, sans-serif;
+  --button-text-style-small-bold-font-size: 10.239999771118164px;
+  --button-text-style-small-bold-line-height: 120%;
+  --button-text-style-small-bold-font-weight: 800;
+  --button-text-style-small-bold-font-style: normal;
+  --badge-s-font-family: NunitoSans-Bold, sans-serif;
+  --badge-s-font-size: 10.239999771118164px;
+  --badge-s-line-height: 73%;
+  --badge-s-font-weight: 700;
+  --badge-s-font-style: normal;
+
+  /* Effects */
+  --background-blur-backdrop-filter: blur(32px);
+  --shadow-new-1-box-shadow: 0px 3.1px 4.74px 0px rgba(0, 0, 0, 0.02),
+    0px 7.45px 16.1px 0px rgba(0, 0, 0, 0.03),
+    0px 14.02px 38.58px 0px rgba(0, 0, 0, 0.03),
+    0px 25.02px 82.34px 0px rgba(0, 0, 0, 0.03),
+    0px 46.79px 178.54px 0px rgba(0, 0, 0, 0.03),
+    0px 112px 489px 0px rgba(0, 0, 0, 0.06);
+  --shadow-2-box-shadow: 0px 4px 31px 0px rgba(0, 0, 0, 0.06),
+    0px 2px 9px 0px rgba(0, 0, 0, 0.03);
+  --blue-box-shadow: 0px 4px 164px 0px rgba(82, 134, 255, 0.25);
+  --x-box-shadow: inset -1px -2px 2px 0px rgba(0, 0, 0, 0.1),
+    inset 1px 1px 4px 0px rgba(255, 255, 255, 0.75),
+    inset -3px -4px 9px 0px rgba(0, 0, 0, 0.1);
+  --grey-shadows-1-box-shadow: 0px 4px 2px -2px rgba(36, 40, 46, 0.02);
+  --grey-shadows-2-box-shadow: 0px 4px 8px -2px rgba(36, 40, 46, 0.04);
+  --grey-shadows-3-box-shadow: 0px 2px 4px -2px rgba(36, 40, 46, 0.08);
+  --grey-shadows-4-box-shadow: 0px 16px 8px -4px rgba(36, 40, 46, 0.03),
+    0px 4px 8px -6px rgba(36, 40, 46, 0.03);
+  --grey-shadows-5-box-shadow: 0px 8px 24px -4px rgba(36, 40, 46, 0.08);
+  --grey-shadows-6-box-shadow: 0px 8px 24px -4px rgba(36, 40, 46, 0.12);
+  --grey-shadows-inner-shadow-box-shadow: inset 0px -2px 1px 0px rgba(36, 40, 46, 0.08);
+  --blue-shadows-1-box-shadow: 0px 4px 2px -2px rgba(0, 60, 199, 0.02);
+  --blue-shadows-2-box-shadow: 0px 2px 4px -2px rgba(0, 60, 199, 0.08);
+  --blue-shadows-3-box-shadow: 0px 4px 8px -2px rgba(0, 60, 199, 0.04);
+  --blue-shadows-4-box-shadow: 0px 16px 8px -4px rgba(0, 60, 199, 0.03),
+    0px 4px 8px -6px rgba(0, 60, 199, 0.03);
+  --blue-shadows-5-box-shadow: 0px 8px 24px -4px rgba(0, 60, 199, 0.08);
+  --blue-shadows-6-box-shadow: 0px 0px 8px 0px rgba(0, 60, 199, 0.32);
+  --blue-shadows-inner-shadow-box-shadow: inset 0px -2px 1px 0px rgba(0, 60, 199, 0.15);
+  --blue-shadows-7-box-shadow: 0px 8px 34px -4px rgba(0, 60, 199, 0.05),
+    0px 13px 13px 3px rgba(78, 115, 248, 0.01);
+  --input-field-box-shadows-warning-box-shadow: 0px 0px 0px 4px
+    rgba(229, 120, 11, 0.2);
+  --input-field-box-shadows-success-box-shadow: 0px 0px 0px 4px
+    rgba(37, 176, 3, 0.2);
+  --input-field-box-shadows-error-box-shadow: 0px 0px 0px 4px
+    rgba(236, 31, 0, 0.2);
+  --input-field-box-shadows-primary-box-shadow: 0px 0px 0px 4px
+    rgba(56, 116, 255, 0.2);
+}

@@ -10,17 +10,17 @@ def home(request, model_id=None):
         sha256_key = request.build_absolute_uri()
         if model_id is None:
             context = { 'model_hash': model_id, "mode":"editable"}
-            return render(request, "pages/jsmodels.html", context)
+            return render(request, "pages/index.html", context)
         else:
             context = { 'model_hash': model_id, "mode":"readonly"}
-            return render(request, "pages/jsmodels.html", context)
+            return render(request, "pages/index.html", context)
 
     if request.method == 'POST':
         post_data = request.POST.get("post_data")
         model_hash = save_model(post_data)
         url = "/model/"+model_hash
         return redirect(url)
-        #return render(request, "pages/jsmodels.html", {})
+        # return render(request, "pages/jsmodels.html", {})
 
 def api(request):
     model_hash = request.GET.get("model_hash")
