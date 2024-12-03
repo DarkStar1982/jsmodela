@@ -139,37 +139,22 @@ class SymbolTable {
     }
 
     createRow(read_only, key='', value='') {
-        const row = document.createElement('tr');
+        const template = document.getElementById("calc_rows");
+        /**
+         * 
+        get template
+        iterate
+        add label/key
+        add value
+
+        add new row 
+        input for label
+        input for value
+         */
         var table_mode = this.mode;
         var focus_id;
         for (let i = 0; i < 2; i++) {
             const cell = document.createElement('td');
-            /*
-                          <div class="row-5">
-                <div class="row">
-                  <div class="table-elements">
-                    <div class="label-container">
-                      <div class="name-column">
-                      --------------------- INPUT TEXT
-                      </div>
-                    </div>
-                  </div>
-                  <div class="table-elements">
-                    <div class="label-container">
-                      <div class="name-column">
-                      --------------------- INPUT TEXT
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sub-header-elementes2">
-                    <img class="clarity-remove-solid16" src="{% static 'img/clarity-remove-solid15.svg' %}" />
-                  </div>
-                </div>
-                <!--div class="line">
-                  <div class="line2"></div>
-                </div -->
-              </div>
-            */
             const input = document.createElement('input');
             input.type = 'text';
             input.value = '';
