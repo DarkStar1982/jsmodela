@@ -140,9 +140,10 @@ class SymbolTable {
 
     createRow(read_only, key='', value='') {
         const template = document.getElementById("calc_rows");
+        const templateClone = template.content.cloneNode(true);
         /**
          * 
-        get template
+        get template and clone
         iterate
         add label/key
         add value
