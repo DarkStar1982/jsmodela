@@ -52,7 +52,7 @@ function run_code(){
 class SymbolTable {
     constructor(containerId, rowsOnCreate = 12, read_only = false, input_mode = 0, mhash = false) {
         this.container = document.getElementById(containerId);
-        this.tableBody = this.container.querySelector('.table-body');
+        this.tableBody = this.container.querySelector('.row-5');
         // this.tbody = this.tableBody.querySelector('tbody');
         this.rowCount = 0;
         this.mode = input_mode;
@@ -60,25 +60,7 @@ class SymbolTable {
         this.table_id = containerId + "_table_";
         this.readOnly = read_only;
         this.loadMoreRows(rowsOnCreate, read_only);
-        this.tableBody.addEventListener('keydown', (e) => this.handleKeyDown(e));
-    }
-
-    createTableElement(columnClass, value = '') 
-    {
-        const tableElement = document.createElement('div');
-        tableElement.classList.add('table-elements');
-    
-        const labelContainer = document.createElement('div');
-        labelContainer.classList.add('label-container');
-    
-        const nameColumn = document.createElement('div');
-        nameColumn.classList.add(columnClass);
-        nameColumn.textContent = value;
-    
-        labelContainer.appendChild(nameColumn);
-        tableElement.appendChild(labelContainer);
-    
-        return tableElement;
+        this.container.addEventListener('keydown', (e) => this.handleKeyDown(e));
     }
 
     removeRow(rowContainer) {
@@ -140,7 +122,7 @@ class SymbolTable {
 
     createRow(read_only, key='', value='') {
         const template = document.getElementById("calc_rows");
-        const templateClone = template.content.cloneNode(true);
+        const row = template.content.cloneNode(true);
         /**
          * 
         get template and clone
@@ -152,34 +134,41 @@ class SymbolTable {
         input for label
         input for value
          */
-        var table_mode = this.mode;
         var focus_id;
-        for (let i = 0; i < 2; i++) {
-            const cell = document.createElement('td');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = '';
-            if ((read_only)&&(i==this.mode))
+        for (let i = 0; i < 10; i++) {
+            if ((i==0))
             {
-                input.readOnly = true;
-                cell.style.backgroundColor = '#EFEFEF';
-            }
-            if (i==0) 
-            {
+                const name = row.querySelector('.name-column.label');
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = '';
+                input.readOnly = (read_only)&&(i==this.mode);
+                name.style.color = '#4E4C5F';
                 input.id = this.table_id + this.rowCount+"_name"
+                input.className = 'inputName';
                 focus_id = input.id;
                 if (key!='') input.value = key;
-
+                name.appendChild(input);
             }
+
             if (i==1) 
             {
-                    input.id = this.table_id + this.rowCount+"_value";
-                    if (value != '') input.value = value;
+                const name = row.querySelector('.name-column.value');
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = '';
+                input.readOnly = (read_only)&&(i==this.mode);
+                name.style.color = '#4E4C5F';
+                input.className = 'inputValue';
+                input.id = this.table_id + this.rowCount+"_value"
+                focus_id = input.id;
+                if (key!='') input.value = key;
+                name.appendChild(input);
+                if (value != '') input.value = value;
             }
-            cell.appendChild(input);
-            row.appendChild(cell);
+
         }
-        this.tbody.appendChild(row);
+        this.tableBody.appendChild(row);
         this.rowCount++;
         document.getElementById(focus_id).focus();
     }
@@ -211,10 +200,6 @@ function unlock_model()
         });
         document.getElementById('submit_share').style.visibility = "visible";
         document.getElementById('submit_share').style.display = "block";
-        document.getElementById('hint_outputs').style.visibility = "visible";
-        document.getElementById('hint_outputs').style.display = "block";
-        document.getElementById('hint_inputs').style.visibility = "visible";
-        document.getElementById('hint_inputs').style.display = "block";
 
         //add editable rows
         table1.model_hash = false;
@@ -250,17 +235,13 @@ function load_model()
     //render as read-only
     if (model_hash!='None')
     {
-        document.getElementById('hint_outputs').style.visibility = "hidden";
-        document.getElementById('hint_outputs').style.display = "block";
-        document.getElementById('hint_inputs').style.visibility = "hidden";
-        document.getElementById('hint_inputs').style.display = "block";
         table1 = new SymbolTable('table-container-1', 0, true, 0, true);
         table2 = new SymbolTable('table-container-2', 0, true, 1, true);
         //hide controls
         document.querySelectorAll('.button-delete').forEach(element => {
-            element.style.display = 'none';
+            // element.style.display = 'none';
         });
-        document.getElementById('submit_share').style.display = 'none';
+        // document.getElementById('submit_share').style.display = 'none';
         //add editable option
 
         const xhttp = new XMLHttpRequest();
