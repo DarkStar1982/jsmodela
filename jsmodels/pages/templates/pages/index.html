@@ -12,36 +12,7 @@
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="{% static 'acorn_interpreter.js' %}" type="text/javascript"></script>
-    <style>
-      a,
-      button,
-      input,
-      select,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        border: none;
-        text-decoration: none;
-        background: none;
-      
-        -webkit-font-smoothing: antialiased;
-      }
-      
-      menu,
-      ol,
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <title>Document</title>
+    <title>JS Models</title>
   </head>
   <body>
     <div class="xl">
@@ -78,8 +49,8 @@
               </div>
             </div>
             <div class="frame-183" id="table-container-1">
-              <!-- add calculations -->
               <div class="row-5">
+                <!-- add calculations -->
                 <div class="row">
                   <div class="table-elements">
                     <div class="label-container">
@@ -93,14 +64,16 @@
                     </div>
                   </div>
                   <div class="sub-header-elementes2">
-                    <img class="clarity-remove-solid2" src="{% static 'img/clarity-remove-solid1.svg' %}" />
+                    <a href="javascript:void(0)" onclick="deleteRow(this)">
+                      <img class="clarity-remove-solid2" src="{% static 'img/clarity-remove-solid5.svg' %}" />
+                    </a>
                   </div>
                 </div>
                 <div class="line">
                   <div class="line2"></div>
                 </div>
-              </div>
               <!-- add calculations -->
+              </div>
             </div>
           </div>
         </div>
@@ -125,8 +98,8 @@
               </div>
             </div>
             <div class="frame-182" id="table-container-2">
-              <!-- add calculations -->
               <div class="row-5">
+                <!-- add calculations -->
                 <div class="row">
                   <div class="table-elements">
                     <div class="label-container">
@@ -135,18 +108,20 @@
                   </div>
                   <div class="table-elements">
                     <div class="label-container">
-                      <div class="name-column">12345676543.67898767</div>
+                      <div class="name-column">1234567</div>
                     </div>
                   </div>
                   <div class="sub-header-elementes2">
-                    <img class="clarity-remove-solid16" src="{% static 'img/clarity-remove-solid15.svg' %}" />
+                    <a href="javascript:void(0)" onclick="deleteRow(this)">
+                      <img class="clarity-remove-solid16" src="{% static 'img/clarity-remove-solid5.svg' %}" />
+                    </a>
                   </div>
                 </div>
-                <!--div class="line">
+                <div class="line">
                   <div class="line2"></div>
-                </div -->
+                </div>
+                <!-- add calculations -->
               </div>
-              <!-- add calculations -->
             </div>
           </div>
         </div>
@@ -228,7 +203,6 @@
     <label id="model_hash" hidden>{{ model_hash }}</label>
 
     <template id="calc_rows">
-      <!-- div class="row-5" -->
         <div class="row">
           <div class="table-elements">
             <div class="label-container">
@@ -245,15 +219,45 @@
             </div>
           </div>
           <div class="sub-header-elementes2">
-            <img class="clarity-remove-solid16" src="{% static 'img/clarity-remove-solid15.svg' %}" />
+            <a href="javascript:void(0)" onclick="deleteRow(this)">
+              <img class="clarity-remove-solid2" src="{% static 'img/clarity-remove-solid5.svg' %}" />
+            </a>
           </div>
-        <!-- /div -->
-        <!--div class="line">
-          <div class="line2"></div>
-        </div -->
-      </div>
+        </div>
     </template>
 
+    <template id="add_rows">
+      <div class="row actions">
+        <div class="table-elements">
+          <div class="label-container">
+            <div>
+              <a class="name-column value" href="javascript:void(0);" onClick="addRow();">
+                <img class="action_icon" src="{% static 'img/add_row.png' %}" > 
+                Add row
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="table-elements">
+          <div class="label-container">
+            <div>
+              <a class="name-column value" href="javascript:void(0);" onClick="deleteAllRows(this);">
+                <img class="action_icon" src="{% static 'img/clear_all.png' %}" > 
+                Clear all
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="sub-header-elementes2">
+        </div>
+      </div>
+  </template>
+
+  <template id="line_divider">
+    <div class="line">
+      <div class="line2"></div>
+    </div>
+  </template>
   </body>
   <script src="{% static 'local_js.1.1.js' %}" type="text/javascript"></script>
 </html>

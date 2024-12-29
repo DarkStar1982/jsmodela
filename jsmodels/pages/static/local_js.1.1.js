@@ -49,10 +49,19 @@ function run_code(){
 
 }
 
+const tableId1 = 'table-container-1';
+const tableId2 = 'table-container-2';
+
+const tableContainerClass = '.row-5';
+const tableRowSelectorClass = '.row';
+const addRowsTemplateDiv = 'add_rows';
+const calcRowsTemplateDiv = 'calc_rows';
+const lineTemplateDiv = 'line_divider';
+const actionsClassName = 'actions';
 class SymbolTable {
     constructor(containerId, rowsOnCreate = 12, read_only = false, input_mode = 0, mhash = false) {
         this.container = document.getElementById(containerId);
-        this.tableBody = this.container.querySelector('.row-5');
+        this.tableBody = this.container.querySelector(tableContainerClass);
         // this.tbody = this.tableBody.querySelector('tbody');
         this.rowCount = 0;
         this.mode = input_mode;
@@ -120,8 +129,21 @@ class SymbolTable {
             return raw_names;
     }
 
+    createCommands()
+    {
+        const template = document.getElementById(addRowsTemplateDiv);
+        const row = template.content.cloneNode(true);
+        this.tableBody.appendChild(row);
+    }
+
+    addLineDivider(){
+        const template = document.getElementById(lineTemplateDiv);
+        const row = template.content.cloneNode(true);
+        this.tableBody.appendChild(row);
+    }
+
     createRow(read_only, key='', value='') {
-        const template = document.getElementById("calc_rows");
+        const template = document.getElementById(calcRowsTemplateDiv);
         const row = template.content.cloneNode(true);
         /**
          * 
@@ -135,7 +157,7 @@ class SymbolTable {
         input for value
          */
         var focus_id;
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 3; i++) {
             if ((i==0))
             {
                 const name = row.querySelector('.name-column.label');
@@ -166,11 +188,11 @@ class SymbolTable {
                 name.appendChild(input);
                 if (value != '') input.value = value;
             }
-
         }
         this.tableBody.appendChild(row);
         this.rowCount++;
         document.getElementById(focus_id).focus();
+        this.addLineDivider();
     }
 
     loadMoreRows(n_rows, keys = [], values = []) {
@@ -183,10 +205,30 @@ class SymbolTable {
 
     handleKeyDown(e) {
     if (!this.model_hash)
-        if ((e.key === 'Enter') && e.target.closest('.row-5').nextElementSibling === null)
+        if ((e.key === 'Enter') && e.target.closest(tableContainerClass).nextElementSibling === null)
         {
             this.loadMoreRows(1, this.readOnly);
         }
+    }
+
+    deleteRow(element) {
+        var row = element.closest(tableRowSelectorClass);
+        var line_divider = row.nextElementSibling;
+        line_divider.remove();
+        row.remove();
+    }
+
+    deleteAllRows() {
+        var allRows = this.tableBody.getElementsByClassName(tableRowSelectorClass.replace('.',''));
+        for(let i=0; i<allRows.length-1; i++) {
+            console.log(allRows[i]);
+            if (!allRows[i].classList.contains(actionsClassName)) {
+                var line_divider = allRows[i].nextElementSibling;
+                line_divider.remove();
+                allRows[i].remove();
+            }
+        }
+        this.clearTableValues();
     }
 }
 
@@ -235,14 +277,12 @@ function load_model()
     //render as read-only
     if (model_hash!='None')
     {
-        table1 = new SymbolTable('table-container-1', 0, true, 0, true);
-        table2 = new SymbolTable('table-container-2', 0, true, 1, true);
+        table1 = new SymbolTable(tableId1, 0, true, 0, true);
+        table2 = new SymbolTable(tableId2, 0, true, 1, true);
         //hide controls
         document.querySelectorAll('.button-delete').forEach(element => {
             // element.style.display = 'none';
         });
-        // document.getElementById('submit_share').style.display = 'none';
-        //add editable option
 
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
@@ -259,6 +299,9 @@ function load_model()
                     table1.createRow(true,v_name, v_value);
                 }
             }
+            table1.createCommands();
+            console.log('left');
+
             var output_variables = data["output_vars"].split("\n");
             for (y in output_variables)
             {
@@ -275,12 +318,10 @@ function load_model()
     }
     else {
         // Initialize tables
-        table1 = new SymbolTable('table-container-1', 1, false, 0, false);
-        table2 = new SymbolTable('table-container-2', 1, true, 1, false);
+        table1 = new SymbolTable(tableId1, 1, false, 0, false);
+        table2 = new SymbolTable(tableId2, 1, true, 1, false);
         document.getElementById('editing_on').style.visibility = "hidden";
         document.getElementById('editing_on').style.display = "block";
-        
-
     }
 }
 
@@ -305,24 +346,30 @@ function submit_action(event) {
     form.submit();
 }
 
-function delete_last_row(container_id)
-{
-    const container = document.getElementById(container_id);
-    
-    // Find the table in the table-body div
-    const tableBody = container.querySelector('.table-body table tbody');
-    
-    // Delete the last row if any rows exist
-    if (tableBody.rows.length > 1) {
-        tableBody.deleteRow(-1);
-    }
-    else
-    {
-        if ('table-container-2'== container_id) table2.clearTableValues();
-        if ('table-container-1'== container_id) table1.clearTableValues();
-    }
+function addRow() {
+    table1.createRow();
+    table2.createRow();
 }
 
+/**
+ * 
+ * TODO: NOT GOOD, redo when can, use table class
+ */
+function deleteRow(element) {
+    var row = element.closest(tableRowSelectorClass);
+    var line_divider = row.nextElementSibling;
+    line_divider.remove();
+    row.remove();
+}
+
+function deleteAllRows(element){
+    var table = element.closest("#"+tableId1);
+    if (table) {
+        table1.deleteAllRows();
+    } else {
+        table2.deleteAllRows();
+    }
+}
 
 function setFooterYear(footer_id) {
     const container = document.getElementById(footer_id);
@@ -341,4 +388,5 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/twilight");
 editor.session.setMode("ace/mode/javascript");
 load_model();
-
+table1.createCommands();
+table2.createCommands();

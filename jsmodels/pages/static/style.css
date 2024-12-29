@@ -303,7 +303,7 @@
   justify-content: flex-start;
   flex-shrink: 0;
   width: 316px;
-  height: 48px;
+  /* height: 48px; */
   position: relative;
 }
 .row {
@@ -355,6 +355,9 @@
   align-items: center;
   justify-content: flex-start;
 }
+.name-column.value, .name-column.label {
+  font-size: 12px;
+}
 .table-elements2 {
   display: flex;
   flex-direction: column;
@@ -400,6 +403,8 @@
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 .line2 {
   background: var(--grey-grey-10, #222834);
@@ -1715,4 +1720,43 @@
 .inputValue, .inputName{
   width: 135px;
   margin-left: 5px;
+}
+
+.action_icon{
+  width: 20px;
+  height: 20px;
+}
+
+.row.actions {
+  height: 25px;
+}
+
+
+/*  THIS GOES LAST*/
+a,
+button,
+input,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  background: none;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+menu,
+ol,
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
