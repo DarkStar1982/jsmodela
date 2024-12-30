@@ -93,49 +93,49 @@
   --heading-styles-heading-xs-819px-regular-font-style: normal;
   --heading-styles-heading-s-1024px-bold-all-caps-font-family: NunitoSans-Bold,
     sans-serif;
-  --heading-styles-heading-s-1024px-bold-all-caps-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-bold-all-caps-font-size: 10.2px;
   --heading-styles-heading-s-1024px-bold-all-caps-line-height: 120%;
   --heading-styles-heading-s-1024px-bold-all-caps-font-weight: 700;
   --heading-styles-heading-s-1024px-bold-all-caps-font-style: normal;
   --heading-styles-heading-s-1024px-bold-font-family: NunitoSans-Bold,
     sans-serif;
-  --heading-styles-heading-s-1024px-bold-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-bold-font-size: 10.2px;
   --heading-styles-heading-s-1024px-bold-line-height: 120%;
   --heading-styles-heading-s-1024px-bold-font-weight: 700;
   --heading-styles-heading-s-1024px-bold-font-style: normal;
   --heading-styles-heading-s-1024px-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --heading-styles-heading-s-1024px-semibold-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-semibold-font-size: 10.2px;
   --heading-styles-heading-s-1024px-semibold-line-height: 120%;
   --heading-styles-heading-s-1024px-semibold-font-weight: 600;
   --heading-styles-heading-s-1024px-semibold-font-style: normal;
   --heading-styles-heading-s-1024px-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --heading-styles-heading-s-1024px-regular-font-size: 10.239999771118164px;
+  --heading-styles-heading-s-1024px-regular-font-size: 10.2px;
   --heading-styles-heading-s-1024px-regular-line-height: 120%;
   --heading-styles-heading-s-1024px-regular-font-weight: 400;
   --heading-styles-heading-s-1024px-regular-font-style: normal;
   --heading-styles-heading-6-1280px-bold-font-family: NunitoSans-Bold,
     sans-serif;
-  --heading-styles-heading-6-1280px-bold-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-bold-font-size: 12.8px;
   --heading-styles-heading-6-1280px-bold-line-height: 120%;
   --heading-styles-heading-6-1280px-bold-font-weight: 700;
   --heading-styles-heading-6-1280px-bold-font-style: normal;
   --heading-styles-heading-6-1280px-bold-all-caps-font-family: NunitoSans-ExtraBold,
     sans-serif;
-  --heading-styles-heading-6-1280px-bold-all-caps-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-bold-all-caps-font-size: 12.8px;
   --heading-styles-heading-6-1280px-bold-all-caps-line-height: 120%;
   --heading-styles-heading-6-1280px-bold-all-caps-font-weight: 800;
   --heading-styles-heading-6-1280px-bold-all-caps-font-style: normal;
   --heading-styles-heading-6-1280px-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --heading-styles-heading-6-1280px-semibold-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-semibold-font-size: 12.8px;
   --heading-styles-heading-6-1280px-semibold-line-height: 120%;
   --heading-styles-heading-6-1280px-semibold-font-weight: 600;
   --heading-styles-heading-6-1280px-semibold-font-style: normal;
   --heading-styles-heading-6-1280px-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --heading-styles-heading-6-1280px-regular-font-size: 12.800000190734863px;
+  --heading-styles-heading-6-1280px-regular-font-size: 12.8px;
   --heading-styles-heading-6-1280px-regular-line-height: 120%;
   --heading-styles-heading-6-1280px-regular-font-weight: 400;
   --heading-styles-heading-6-1280px-regular-font-style: normal;
@@ -234,7 +234,7 @@
   --heading-styles-heading-2-3125px-regular-font-style: normal;
   --heading-styles-heading-1-3906px-extrabold-font-family: NunitoSans-ExtraBold,
     sans-serif;
-  --heading-styles-heading-1-3906px-extrabold-font-size: 39.060001373291016px;
+  --heading-styles-heading-1-3906px-extrabold-font-size: 39px;
   --heading-styles-heading-1-3906px-extrabold-line-height: 120%;
   --heading-styles-heading-1-3906px-extrabold-font-weight: 800;
   --heading-styles-heading-1-3906px-extrabold-font-style: normal;
@@ -246,7 +246,7 @@
   --heading-styles-heading-1-3906px-semibold-font-style: normal;
   --heading-styles-heading-1-3906px-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --heading-styles-heading-1-3906px-regular-font-size: 39.060001373291016px;
+  --heading-styles-heading-1-3906px-regular-font-size: 39px;
   --heading-styles-heading-1-3906px-regular-line-height: 120%;
   --heading-styles-heading-1-3906px-regular-font-weight: 400;
   --heading-styles-heading-1-3906px-regular-font-style: normal;
@@ -258,13 +258,13 @@
   --display-styles-display-3-4883px-bold-font-style: normal;
   --display-styles-display-3-4883px-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --display-styles-display-3-4883px-semibold-font-size: 48.83000183105469px;
+  --display-styles-display-3-4883px-semibold-font-size: 48.8px;
   --display-styles-display-3-4883px-semibold-line-height: 100%;
   --display-styles-display-3-4883px-semibold-font-weight: 600;
   --display-styles-display-3-4883px-semibold-font-style: normal;
   --display-styles-display-3-4883px-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --display-styles-display-3-4883px-regular-font-size: 48.83000183105469px;
+  --display-styles-display-3-4883px-regular-font-size: 48.8px;
   --display-styles-display-3-4883px-regular-line-height: 120%;
   --display-styles-display-3-4883px-regular-font-weight: 400;
   --display-styles-display-3-4883px-regular-font-style: normal;
@@ -288,43 +288,43 @@
   --display-styles-display-2-6104px-regular-font-style: normal;
   --display-styles-display-1-7629px-extrabold-font-family: NunitoSans-Black,
     sans-serif;
-  --display-styles-display-1-7629px-extrabold-font-size: 76.29000091552734px;
+  --display-styles-display-1-7629px-extrabold-font-size: 76.3px;
   --display-styles-display-1-7629px-extrabold-line-height: 95%;
   --display-styles-display-1-7629px-extrabold-font-weight: 900;
   --display-styles-display-1-7629px-extrabold-font-style: normal;
   --display-styles-display-1-7629px-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --display-styles-display-1-7629px-semibold-font-size: 76.29000091552734px;
+  --display-styles-display-1-7629px-semibold-font-size: 76.3px;
   --display-styles-display-1-7629px-semibold-line-height: 120%;
   --display-styles-display-1-7629px-semibold-font-weight: 600;
   --display-styles-display-1-7629px-semibold-font-style: normal;
   --display-styles-display-1-7629px-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --display-styles-display-1-7629px-regular-font-size: 76.29000091552734px;
+  --display-styles-display-1-7629px-regular-font-size: 76.3px;
   --display-styles-display-1-7629px-regular-line-height: 120%;
   --display-styles-display-1-7629px-regular-font-weight: 400;
   --display-styles-display-1-7629px-regular-font-style: normal;
   --base-text-styles-font-size-2-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --base-text-styles-font-size-2-regular-font-size: 10.239999771118164px;
+  --base-text-styles-font-size-2-regular-font-size: 10.2px;
   --base-text-styles-font-size-2-regular-line-height: 149%;
   --base-text-styles-font-size-2-regular-font-weight: 400;
   --base-text-styles-font-size-2-regular-font-style: normal;
   --base-text-styles-font-size-2-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --base-text-styles-font-size-2-semibold-font-size: 10.239999771118164px;
+  --base-text-styles-font-size-2-semibold-font-size: 10.2px;
   --base-text-styles-font-size-2-semibold-line-height: 149%;
   --base-text-styles-font-size-2-semibold-font-weight: 600;
   --base-text-styles-font-size-2-semibold-font-style: normal;
   --base-text-styles-font-size-1-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --base-text-styles-font-size-1-regular-font-size: 12.800000190734863px;
+  --base-text-styles-font-size-1-regular-font-size: 12.8px;
   --base-text-styles-font-size-1-regular-line-height: 149%;
   --base-text-styles-font-size-1-regular-font-weight: 400;
   --base-text-styles-font-size-1-regular-font-style: normal;
   --base-text-styles-font-size-1-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --base-text-styles-font-size-1-semibold-font-size: 12.800000190734863px;
+  --base-text-styles-font-size-1-semibold-font-size: 12.8px;
   --base-text-styles-font-size-1-semibold-line-height: 149%;
   --base-text-styles-font-size-1-semibold-font-weight: 600;
   --base-text-styles-font-size-1-semibold-font-style: normal;
@@ -378,30 +378,30 @@
   --base-text-styles-font-size-3-semibold-font-style: normal;
   --base-text-styles-font-size-4-regular-font-family: NunitoSans-Regular,
     sans-serif;
-  --base-text-styles-font-size-4-regular-font-size: 39.060001373291016px;
+  --base-text-styles-font-size-4-regular-font-size: 39px;
   --base-text-styles-font-size-4-regular-line-height: 149%;
   --base-text-styles-font-size-4-regular-font-weight: 400;
   --base-text-styles-font-size-4-regular-font-style: normal;
   --base-text-styles-font-size-4-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --base-text-styles-font-size-4-semibold-font-size: 39.060001373291016px;
+  --base-text-styles-font-size-4-semibold-font-size: 39px;
   --base-text-styles-font-size-4-semibold-line-height: 149%;
   --base-text-styles-font-size-4-semibold-font-weight: 600;
   --base-text-styles-font-size-4-semibold-font-style: normal;
   --base-text-styles-font-size-5-regular-font-family: Manrope-Regular,
     sans-serif;
-  --base-text-styles-font-size-5-regular-font-size: 48.83000183105469px;
+  --base-text-styles-font-size-5-regular-font-size: 48.8px;
   --base-text-styles-font-size-5-regular-line-height: 149%;
   --base-text-styles-font-size-5-regular-font-weight: 400;
   --base-text-styles-font-size-5-regular-font-style: normal;
   --base-text-styles-font-size-5-semibold-font-family: NunitoSans-SemiBold,
     sans-serif;
-  --base-text-styles-font-size-5-semibold-font-size: 48.83000183105469px;
+  --base-text-styles-font-size-5-semibold-font-size: 48.8px;
   --base-text-styles-font-size-5-semibold-line-height: 149%;
   --base-text-styles-font-size-5-semibold-font-weight: 600;
   --base-text-styles-font-size-5-semibold-font-style: normal;
   --button-text-style-regular-bold-font-family: NunitoSans-Bold, sans-serif;
-  --button-text-style-regular-bold-font-size: 12.800000190734863px;
+  --button-text-style-regular-bold-font-size: 12.8px;
   --button-text-style-regular-bold-line-height: 120%;
   --button-text-style-regular-bold-font-weight: 700;
   --button-text-style-regular-bold-font-style: normal;
@@ -411,12 +411,12 @@
   --button-text-style-large-bold-font-weight: 700;
   --button-text-style-large-bold-font-style: normal;
   --button-text-style-small-bold-font-family: NunitoSans-ExtraBold, sans-serif;
-  --button-text-style-small-bold-font-size: 10.239999771118164px;
+  --button-text-style-small-bold-font-size: 10.2px;
   --button-text-style-small-bold-line-height: 120%;
   --button-text-style-small-bold-font-weight: 800;
   --button-text-style-small-bold-font-style: normal;
   --badge-s-font-family: NunitoSans-Bold, sans-serif;
-  --badge-s-font-size: 10.239999771118164px;
+  --badge-s-font-size: 10.2px;
   --badge-s-line-height: 73%;
   --badge-s-font-weight: 700;
   --badge-s-font-style: normal;

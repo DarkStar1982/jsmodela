@@ -1,56 +1,6 @@
-function run_code(){
-    var code = editor.getValue();
-    var input_variables = table1.getTableValues();
-    var output_variables = table2.getTableValues();
-    code = input_variables + output_variables + code;
-
-    var initFunc = function(interpreter, globalObject) {
-    //interpreter.setProperty(globalObject, 'b', String());
-
-        var wrapper = function update_dom_outputs(p_name, p_value) {
-            function isFloat(n) {
-                return n === +n && n !== (n|0);
-            }
-            var dom_objects = table2.getTableValues(1);
-            var table_id = dom_objects[p_name][0];
-            var inputElement = document.getElementById(table_id);
-            var precision = document.getElementById('pr_set').value;
-            if (isFloat(p_value)) 
-            {
-                if (Math.abs(p_value)>1e6)
-                {
-                    inputElement.value = Number.parseFloat(p_value).toExponential(precision);
-                }
-                else
-                    inputElement.value = Number.parseFloat(p_value).toFixed(precision);
-            }
-            else
-                inputElement.value = p_value;
-        };
-        interpreter.setProperty(globalObject, 'update_dom_outputs', interpreter.createNativeFunction(wrapper));
-    };
-    var outputs = table2.getTableValues(2);
-    code = code + "\n";
-    
-    outputs.forEach(function(element){
-        code = code + 'update_dom_outputs('+'"'+element+'"'+','+element+');\n';
-    });
-    //filter for unsupported features
-    code = code.replaceAll("let ", "var ");
-    try
-    {
-        document.getElementById("last_error").innerHTML='';
-        var myInterpreter = new Interpreter(code, initFunc);   
-        myInterpreter.run();
-    }
-    catch(err) { 
-        document.getElementById("last_error").innerHTML=err;
-    }
-
-}
-
 const tableId1 = 'table-container-1';
 const tableId2 = 'table-container-2';
+const errorModalId = 'modalIdError';
 
 const tableContainerClass = '.row-5';
 const tableRowSelectorClass = '.row';
@@ -58,11 +8,12 @@ const addRowsTemplateDiv = 'add_rows';
 const calcRowsTemplateDiv = 'calc_rows';
 const lineTemplateDiv = 'line_divider';
 const actionsClassName = 'actions';
+
+const calcPrecision = 4;
 class SymbolTable {
     constructor(containerId, rowsOnCreate = 12, read_only = false, input_mode = 0, mhash = false) {
         this.container = document.getElementById(containerId);
         this.tableBody = this.container.querySelector(tableContainerClass);
-        // this.tbody = this.tableBody.querySelector('tbody');
         this.rowCount = 0;
         this.mode = input_mode;
         this.model_hash = mhash;
@@ -72,16 +23,11 @@ class SymbolTable {
         this.container.addEventListener('keydown', (e) => this.handleKeyDown(e));
     }
 
-    removeRow(rowContainer) {
-        this.tableBody.removeChild(rowContainer);
-        this.rowCount--;
-    }
-
     clearTableValues()
     {
-        const rows = this.tbody.querySelectorAll('tr');
+        const rows = this.tbody.querySelectorAll('.row');
         rows.forEach((row, index) => {
-            const cells = row.querySelectorAll('td');
+            const cells = row.querySelectorAll('.name-column');
             const name_element =  cells[0].querySelector('input');
             name_element.value="";
             var value_element = cells[1].querySelector('input');
@@ -95,12 +41,13 @@ class SymbolTable {
         var raw_names = [];
         var symbol_table={};
         // Get all rows in the table body
-        const rows = this.tbody.querySelectorAll('tr');
+        const rows = this.tableBody.querySelectorAll('.row:not(.actions)');
 
         // Iterate through each row
         rows.forEach((row, index) => {
+            console.log("row:", row);
         // Get all cells in the current row
-            const cells = row.querySelectorAll('td');
+            const cells = row.querySelectorAll('.name-column');
 
             const name_element =  cells[0].querySelector('input');
             var nameInput = name_element.value;
@@ -136,6 +83,13 @@ class SymbolTable {
         this.tableBody.appendChild(row);
     }
 
+    deleteCommands() {
+        let commands = this.tableBody.querySelectorAll('.actions');
+        if (commands.length) {
+            commands[0].remove();
+        }
+    }
+
     addLineDivider(){
         const template = document.getElementById(lineTemplateDiv);
         const row = template.content.cloneNode(true);
@@ -143,6 +97,7 @@ class SymbolTable {
     }
 
     createRow(read_only, key='', value='') {
+        this.deleteCommands();
         const template = document.getElementById(calcRowsTemplateDiv);
         const row = template.content.cloneNode(true);
         /**
@@ -165,7 +120,6 @@ class SymbolTable {
                 input.type = 'text';
                 input.value = '';
                 input.readOnly = (read_only)&&(i==this.mode);
-                name.style.color = '#4E4C5F';
                 input.id = this.table_id + this.rowCount+"_name"
                 input.className = 'inputName';
                 focus_id = input.id;
@@ -177,10 +131,9 @@ class SymbolTable {
             {
                 const name = row.querySelector('.name-column.value');
                 const input = document.createElement('input');
-                input.type = 'text';
+                input.type = 'number';
                 input.value = '';
                 input.readOnly = (read_only)&&(i==this.mode);
-                name.style.color = '#4E4C5F';
                 input.className = 'inputValue';
                 input.id = this.table_id + this.rowCount+"_value"
                 focus_id = input.id;
@@ -191,8 +144,10 @@ class SymbolTable {
         }
         this.tableBody.appendChild(row);
         this.rowCount++;
+
         document.getElementById(focus_id).focus();
         this.addLineDivider();
+        this.createCommands();
     }
 
     loadMoreRows(n_rows, keys = [], values = []) {
@@ -216,29 +171,80 @@ class SymbolTable {
         var line_divider = row.nextElementSibling;
         line_divider.remove();
         row.remove();
+        this.rowCount--;
     }
 
     deleteAllRows() {
-        var allRows = this.tableBody.getElementsByClassName(tableRowSelectorClass.replace('.',''));
-        for(let i=0; i<allRows.length-1; i++) {
-            console.log(allRows[i]);
+        let allRows = this.tableBody.querySelectorAll(tableRowSelectorClass);
+        console.log("all rows:", allRows);
+        for(let i=0; i<allRows.length; i++) {
             if (!allRows[i].classList.contains(actionsClassName)) {
-                var line_divider = allRows[i].nextElementSibling;
+                let line_divider = allRows[i].nextElementSibling;
                 line_divider.remove();
                 allRows[i].remove();
             }
         }
-        this.clearTableValues();
+        this.rowCount = 0;
+    }
+}
+
+function run_code(){
+    var code = editor.getValue();
+    var input_variables = table1.getTableValues();
+    var output_variables = table2.getTableValues();
+    code = input_variables + output_variables + code;
+
+    var initFunc = function(interpreter, globalObject) {
+
+        var wrapper = function update_dom_outputs(p_name, p_value) {
+            function isFloat(n) {
+                return n === +n && n !== (n|0);
+            }
+            var dom_objects = table2.getTableValues(1);
+            var table_id = dom_objects[p_name][0];
+            var inputElement = document.getElementById(table_id);
+            var precision = calcPrecision;
+            if (isFloat(p_value)) 
+            {
+                if (Math.abs(p_value)>1e6)
+                {
+                    inputElement.value = Number.parseFloat(p_value).toExponential(precision);
+                }
+                else
+                    inputElement.value = Number.parseFloat(p_value).toFixed(precision);
+            }
+            else
+                inputElement.value = p_value;
+        };
+        interpreter.setProperty(globalObject, 'update_dom_outputs', interpreter.createNativeFunction(wrapper));
+    };
+    var outputs = table2.getTableValues(2);
+    code = code + "\n";
+    
+    outputs.forEach(function(element){
+        code = code + 'update_dom_outputs('+'"'+element+'"'+','+element+');\n';
+    });
+
+    //filter for unsupported features
+    code = code.replaceAll("let ", "var ");
+    try
+    {
+        document.getElementById("last_error").innerHTML='';
+        var myInterpreter = new Interpreter(code, initFunc);   
+        myInterpreter.run();
+    }
+    catch(err) { 
+        document.getElementById("last_error").innerHTML=err;
+        createModal(errorModalId);
     }
 }
 
 function unlock_model()
 {
         //show controls
-        document.querySelectorAll('.button-delete').forEach(element => {
+        document.querySelectorAll('.deleteOneRowButton').forEach(element => {
             element.style.visibility = "visible";
             element.style.display = "block";
-
         });
         document.getElementById('submit_share').style.visibility = "visible";
         document.getElementById('submit_share').style.display = "block";
@@ -249,26 +255,37 @@ function unlock_model()
         table1.readOnly = false;
         //enable input rows
         // Get the specific container's table body
-        const tableBody = document.querySelector('#table-container-1 .table-body tbody');
-    
+        const tableBody = document.querySelector('.challenge-list .row-5');
+
         // Iterate through all rows
-        Array.from(tableBody.rows).forEach(row => {
+        Array.from(tableBody).forEach(row => {
             // Get all input elements in the current row
-            const cells = row.getElementsByTagName('td');
+            const cells = row.getElementsByTagName('.name-column');
             const inputs = row.getElementsByTagName('input');
-            row.style.backgroundColor = 'white';
+            //row.style.backgroundColor = 'white';
+
             // Skip the first input (readonly) and enable the second one
             if (inputs.length >= 2) {
                 inputs[1].readOnly = false;  // Enable first input
                 inputs[0].readOnly = false;  // Enable second input
+
                 // Optionally, you can also modify other input attributes
-                cells[0].style.backgroundColor = 'white';  // Visual feedback
-                cells[1].style.backgroundColor = 'white';  // Visual feedback
+                //cells[0].style.backgroundColor = 'white';  // Visual feedback
+                //cells[1].style.backgroundColor = 'white';  // Visual feedback
             }
         });
 
         //hide the edit button
+        toggleEditButtonVisible();
+}
+
+function toggleEditButtonVisible(show) {
+    if (show) {
+        document.getElementById('editing_on').style.display = "flex";
+    } else {
         document.getElementById('editing_on').style.display = 'none';
+    }
+    
 }
 
 function load_model()
@@ -280,8 +297,8 @@ function load_model()
         table1 = new SymbolTable(tableId1, 0, true, 0, true);
         table2 = new SymbolTable(tableId2, 0, true, 1, true);
         //hide controls
-        document.querySelectorAll('.button-delete').forEach(element => {
-            // element.style.display = 'none';
+        document.querySelectorAll('.deleteOneRowButton').forEach(element => {
+            element.style.display = 'none';
         });
 
         const xhttp = new XMLHttpRequest();
@@ -299,8 +316,6 @@ function load_model()
                     table1.createRow(true,v_name, v_value);
                 }
             }
-            table1.createCommands();
-            console.log('left');
 
             var output_variables = data["output_vars"].split("\n");
             for (y in output_variables)
@@ -320,8 +335,8 @@ function load_model()
         // Initialize tables
         table1 = new SymbolTable(tableId1, 1, false, 0, false);
         table2 = new SymbolTable(tableId2, 1, true, 1, false);
-        document.getElementById('editing_on').style.visibility = "hidden";
-        document.getElementById('editing_on').style.display = "block";
+        // show edit button
+        toggleEditButtonVisible(true);
     }
 }
 
@@ -346,20 +361,22 @@ function submit_action(event) {
     form.submit();
 }
 
-function addRow() {
-    table1.createRow();
-    table2.createRow();
+function addRow(element){
+    var table = element.closest("#"+tableId1);
+    if (table) {
+        table1.createRow();
+    } else {
+        table2.createRow();
+    }
 }
 
-/**
- * 
- * TODO: NOT GOOD, redo when can, use table class
- */
 function deleteRow(element) {
-    var row = element.closest(tableRowSelectorClass);
-    var line_divider = row.nextElementSibling;
-    line_divider.remove();
-    row.remove();
+    var table = element.closest("#"+tableId1);
+    if (table) {
+        table1.deleteRow(element);
+    } else {
+        table2.deleteRow(element);
+    }
 }
 
 function deleteAllRows(element){
@@ -376,6 +393,23 @@ function setFooterYear(footer_id) {
     container.innerHTML = new Date().getFullYear();
 }
 
+function createModal(modalId) {
+    const modal = document.getElementById(modalId);
+    const closeBtn = modal.querySelector('.close');
+    console.log("modal:", modal);
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+    modal.style.display = 'block';
+    modal.style.visibility = 'visible';
+}
+
 setFooterYear("copyright_date");
 // Create tables
 var table1; 
@@ -388,5 +422,3 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/twilight");
 editor.session.setMode("ace/mode/javascript");
 load_model();
-table1.createCommands();
-table2.createCommands();
