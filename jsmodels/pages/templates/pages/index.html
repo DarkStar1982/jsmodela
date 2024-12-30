@@ -12,36 +12,7 @@
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="{% static 'acorn_interpreter.js' %}" type="text/javascript"></script>
-    <style>
-      a,
-      button,
-      input,
-      select,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        border: none;
-        text-decoration: none;
-        background: none;
-      
-        -webkit-font-smoothing: antialiased;
-      }
-      
-      menu,
-      ol,
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <title>Document</title>
+    <title>JS Models</title>
   </head>
   <body>
     <div class="xl">
@@ -78,29 +49,14 @@
               </div>
             </div>
             <div class="frame-183" id="table-container-1">
-              <!-- add calculations -->
               <div class="row-5">
-                <div class="row">
-                  <div class="table-elements">
-                    <div class="label-container">
-                      <div class="name-column">au</div>
-                    </div>
-                  </div>
-
-                  <div class="table-elements">
-                    <div class="label-container">
-                      <div class="name-column">1.23456543567</div>
-                    </div>
-                  </div>
-                  <div class="sub-header-elementes2">
-                    <img class="clarity-remove-solid2" src="{% static 'img/clarity-remove-solid1.svg' %}" />
-                  </div>
-                </div>
                 <div class="line">
                   <div class="line2"></div>
                 </div>
+                <!-- add calculations -->
+
+                <!-- add calculations -->
               </div>
-              <!-- add calculations -->
             </div>
           </div>
         </div>
@@ -125,28 +81,14 @@
               </div>
             </div>
             <div class="frame-182" id="table-container-2">
-              <!-- add calculations -->
               <div class="row-5">
-                <div class="row">
-                  <div class="table-elements">
-                    <div class="label-container">
-                      <div class="name-column">T</div>
-                    </div>
-                  </div>
-                  <div class="table-elements">
-                    <div class="label-container">
-                      <div class="name-column">12345676543.67898767</div>
-                    </div>
-                  </div>
-                  <div class="sub-header-elementes2">
-                    <img class="clarity-remove-solid16" src="{% static 'img/clarity-remove-solid15.svg' %}" />
-                  </div>
-                </div>
-                <!--div class="line">
+                <div class="line">
                   <div class="line2"></div>
-                </div -->
+                </div>
+                <!-- add calculations -->
+
+                <!-- add calculations -->
               </div>
-              <!-- add calculations -->
             </div>
           </div>
         </div>
@@ -174,11 +116,11 @@
               </div>
             </div>
             <div class="navbar-nav">
-              <div class="frame-38814">
+              <div class="frame-38814" id="editing_on">
                 <div class="tabler-edit">
                   <img class="group4" src="{% static 'img/group3.svg' %}" />
                 </div>
-                <button class="phoenix-buttons button-edit" id="editing_on" false onclick="unlock_model()">
+                <button class="phoenix-buttons button-edit" false onclick="unlock_model()">
                   <p class="label5">Copy and edit</p>
                 </button>
               </div>
@@ -223,9 +165,75 @@
           </div>
         </div>
       </div>
+      <!-- Modal HTML -->
+      <div id="modalIdError" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h3 id="modalTitle">ERROR !</h3>
+          <p id="modalMessage">Invalid Data.</p>
+        </div>
+      </div>
     </div>
     <div id="canvasMap"><div>
     <label id="model_hash" hidden>{{ model_hash }}</label>
+
+    <template id="calc_rows">
+        <div class="row">
+          <div class="table-elements">
+            <div class="label-container">
+              <div class="name-column label">
+
+              </div>
+            </div>
+          </div>
+          <div class="table-elements">
+            <div class="label-container">
+              <div class="name-column value">
+
+              </div>
+            </div>
+          </div>
+          <div class="sub-header-elementes2 deleteOneRowButton">
+            <a href="javascript:void(0)" onclick="deleteRow(this)">
+              <img class="clarity-remove-solid2" src="{% static 'img/clarity-remove-solid5.svg' %}" />
+            </a>
+          </div>
+        </div>
+    </template>
+
+    <template id="add_rows">
+      <div class="row actions">
+        <div class="table-elements">
+          <div class="label-container">
+            <div>
+              <a class="name-column value" href="javascript:void(0);" onClick="addRow(this);">
+                <img class="action_icon" src="{% static 'img/add_row.png' %}" > 
+                Add row
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="table-elements">
+          <div class="label-container">
+            <div>
+              <a class="name-column value" href="javascript:void(0);" onClick="deleteAllRows(this);">
+                <img class="action_icon" src="{% static 'img/clear_all.png' %}" > 
+                Clear all
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="sub-header-elementes2">
+        </div>
+      </div>
+    </template>
+
+    <template id="line_divider">
+      <div class="line">
+        <div class="line2"></div>
+      </div>
+    </template>
+    <input type="hidden" id="last_error" value="">
   </body>
-  <script src="{% static 'local_js.js' %}" type="text/javascript"></script>
+  <script src="{% static 'local_js.1.1.js' %}" type="text/javascript"></script>
 </html>
